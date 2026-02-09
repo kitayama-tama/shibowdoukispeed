@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就活ハラスメントに負けるな！志望動機サポーター【最終版】</title>
+    <style>
+        :root { 
+            --main-color: #2e7d32; 
+            --sub-color: #e8f5e9; 
+            --accent: #f39c12; 
+            --text-gray: #555; 
+            --warm-bg: #fffdf5;
+        }
+        body { 
+            font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; 
+            background: linear-gradient(135deg, #f4f7f4 0%, #e8f5e9 100%);
+            margin: 0; 
+            padding: 20px; 
+            line-height: 1.8; 
+            color: #333; 
+        }
+        .container { 
+            max-width: 850px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 45px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12); 
+            border-top: 12px solid var(--main-color); 
+        }
+        h1 { 
+            color: var(--main-color); 
+            text-align: center; 
+            font-size: 1.7em; 
+            margin-bottom: 10px; 
+            line-height: 1.4; 
+        }
+        .subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            font-weight: normal;
+        }
+        .message { 
+            background: var(--sub-color); 
+            padding: 22px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            font-size: 0.95em; 
+            border-left: 6px solid var(--main-color); 
+            line-height: 1.7;
+        }
+        .progress-bar {
+            background: #f0f0f0;
+            height: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, var(--main-color), #4caf50);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.85em;
+        }
+        .step-indicator {
+            background: var(--warm-bg);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 35px 0 20px;
+            border-left: 5px solid var(--accent);
+            font-weight: bold;
+            color: #d35400;
+            font-size: 1.05em;
+        }
+        h2 { 
+            font-size: 1.1em; 
+            color: #2c3e50; 
+            margin-top: 30px; 
+            margin-bottom: 10px;
+            border-left: 5px solid var(--accent); 
+            padding-left: 12px; 
+            background: var(--warm-bg); 
+            padding-top: 8px; 
+            padding-bottom: 8px; 
+        }
+        label { 
+            display: block; 
+            margin: 20px 0 8px; 
+            font-weight: bold; 
+            font-size: 0.95em; 
+            color: #333; 
+        }
+        input, select, textarea { 
+            width: 100%; 
+            padding: 13px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 1em; 
+            font-family: inherit; 
+            transition: all 0.3s;
+        }
+        input:focus, select:focus, textarea:focus { 
+            border-color: var(--main-color); 
+            outline: none; 
+            box-shadow: 0 0 8px rgba(46,125,50,0.25); 
+            background: #fafffe;
+        }
+        .hint { 
+            font-size: 0.88em; 
+            color: var(--text-gray); 
+            margin: 5px 0 10px; 
+            background: #f9f9f9; 
+            padding: 8px 12px; 
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+        .hint-box {
+            background: #fff9e6;
+            border: 1px dashed #f39c12;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 0.9em;
+            color: #d35400;
+        }
+        .hint-box ul {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+        }
+        .hint-box li {
+            margin: 5px 0;
+        }
+        .short-textarea {
+            height: 80px !important;
+            resize: none;
+        }
+        .char-counter {
+            text-align: right;
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+        .char-counter.good {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .char-counter.warning {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .optional-label {
+            color: #888;
+            font-size: 0.85em;
+            font-weight: normal;
+            margin-left: 8px;
+        }
+        .btn-submit { 
+            background: linear-gradient(135deg, var(--main-color) 0%, #1b5e20 100%);
+            color: white; 
+            border: none; 
+            padding: 22px; 
+            width: 100%; 
+            border-radius: 50px; 
+            font-size: 1.25em; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 40px; 
+            transition: all 0.3s; 
+            box-shadow: 0 5px 0 #1b5e20, 0 8px 20px rgba(46,125,50,0.3); 
+        }
+        .btn-submit:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 0 #1b5e20, 0 12px 25px rgba(46,125,50,0.4); 
+        }
+        .btn-submit:active { 
+            transform: translateY(2px); 
+            box-shadow: 0 2px 0 #1b5e20; 
+        }
+        .btn-secondary {
+            background: #fff;
+            color: #333;
+            border: 2px solid #ddd;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            display: inline-block;
+        }
+        .btn-secondary:hover {
+            border-color: var(--main-color);
+            color: var(--main-color);
+            transform: translateY(-2px);
+        }
+        .btn-dojo {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 5px;
+            display: inline-block;
+            box-shadow: 0 4px 0 #c23850;
+        }
+        .btn-dojo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #c23850;
+        }
+        #output { 
+            margin-top: 45px; 
+            padding: 30px; 
+            background: linear-gradient(135deg, #fffbe6 0%, #fff9db 100%); 
+            border: 3px dashed var(--accent); 
+            border-radius: 15px; 
+            display: none; 
+        }
+        #dojo-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ffe6e6 0%, #ffd6d6 100%);
+            border: 3px dashed #ff6b6b;
+            border-radius: 15px;
+            display: none;
+        }
+        .copy-btn { 
+            background: #333; 
+            color: white; 
+            padding: 12px 25px; 
+            border-radius: 30px; 
+            float: right; 
+            cursor: pointer; 
+            border: none; 
+            font-size: 0.95em; 
+            margin-top: -5px; 
+            transition: 0.3s;
+        }
+        .copy-btn:hover { 
+            background: #555; 
+            transform: translateY(-2px);
+        }
+        textarea[readonly] { 
+            background: white; 
+            border: 1px solid #ddd; 
+            resize: vertical; 
+            color: #333; 
+            font-family: "Courier New", monospace; 
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .checklist {
+            background: #f0f8ff;
+            border: 2px solid #2196f3;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        .checklist h3 {
+            color: #1565c0;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        .checklist label {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .encouragement {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: #1565c0;
+            line-height: 1.6;
+        }
+        .checkpoint {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 15px 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #e65100;
+        }
+        .result-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid var(--main-color);
+        }
+        .result-section h3 {
+            color: var(--main-color);
+            margin-top: 0;
+        }
+        .button-group {
+            text-align: center;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🌱 就活ハラスメントに負けるな！</h1>
+    <p class="subtitle">等身大のマッチング支援ツール【最終版】</p>
+    
+    <div class="message">
+        <strong>💚 キャリ爺からのメッセージ</strong><br>
+        相談に来てくれてありがとう。その一歩が一番大切です。<br>
+        「どこでも通じる志望動機」なんて言われても気にしないで。<br><br>
+        このツールは<strong>「選ぶだけ」でほぼ完成</strong>します。<br>
+        自由に書く欄は、<strong>2〜3行だけ</strong>。書けるところだけでOK。<br>
+        あなたの「ありのままの言葉」が、一番の武器になります。
+    </div>
+
+    <!-- 進捗バー -->
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressBar">0% 完了</div>
+    </div>
+
+    <!-- STEP 1: 企業研究 -->
+    <div class="step-indicator">📋 STEP 1: 志望先を教えてください（2分で終わります）</div>
+    
+    <label>志望する企業名</label>
+    <input type="text" id="company" placeholder="例：株式会社システナ、スカイ株式会社" oninput="updateProgress()">
+    
+    <label>志望する職種</label>
+    <select id="job" onchange="updateProgress()">
+        <option value="">選んでください</option>
+        <option value="営業（顧客の困りごとを解決する）">営業</option>
+        <option value="事務・管理（組織を正確に支える）">事務・管理</option>
+        <option value="接客・販売（対面で喜びを提供する）">接客・販売</option>
+        <option value="技術・製造（ものづくりで貢献する）">技術・製造</option>
+        <option value="IT・エンジニア（仕組みで便利にする）">IT・エンジニア</option>
+        <option value="企画・マーケティング（価値を伝える）">企画・マーケティング</option>
+        <option value="その他">その他</option>
+    </select>
+
+    <label>その企業のどこに「直感」で惹かれた？</label>
+    <select id="trigger_select" onchange="updateProgress()">
+        <option value="">選んでください</option>
+        <option value="社員の雰囲気・社風">社員の雰囲気・社風が良い</option>
+        <option value="商品・サービスへの愛着">商品・サービスが好き</option>
+        <option value="社会への貢献姿勢">社会への貢献姿勢に惹かれた</option>
+        <option value="メッセージへの共感">社長や社員の言葉に共感した</option>
+        <option value="働き方・成長環境">働き方や成長できる環境</option>
+        <option value="自宅から近い・通いやすい">自宅から近い・通いやすい</option>
+        <option value="その他">その他</option>
+    </select>
+    
+    <label>その他、あなたに伝えたい部分を書いてください <span class="optional-label">（2〜3行・書けるところだけでOK）</span></label>
+    <div class="hint-box">
+        💡 こんなことを思い出してみて：
+        <ul>
+            <li>説明会で社員さんがどんな雰囲気だった？</li>
+            <li>お店や商品で何を感じた？</li>
+            <li>HPやパンフで印象に残った言葉は？</li>
+        </ul>
+    </div>
+    <textarea id="trigger_free" class="short-textarea" placeholder="例：説明会で社員の方が笑顔で「失敗しても大丈夫だよ」と話していて、温かい雰囲気を感じた。" oninput="updateProgress(); updateCharCount('trigger_free', 'trigger_count', 80)"></textarea>
+    <div class="char-counter" id="trigger_count">0文字 / 80文字以上推奨</div>
+
+    <div class="checkpoint">✨ ここまで書けたら50%完了！あと少し！</div>
+
+    <!-- STEP 2: 自己理解 -->
+    <div class="step-indicator">🌟 STEP 2: あなた自身について教えてください</div>
+    
+    <label>あなたが発揮してきた「力」に近いものは？</label>
+    <select id="competency" onchange="toggleCompetencyOther(); updateProgress();">
+        <option value="">選んでください</option>
+        <option value="主体性（物事に進んで取り組む力）">主体性：自分から進んでやる</option>
+        <option value="働きかけ力（他人に働きかけ巻き込む力）">働きかけ力：周りを誘って動く</option>
+        <option value="実行力（目標を設定し確実に実行する力）">実行力：決めたことを最後までやる</option>
+        <option value="課題発見力（現状を分析し目的や課題を明らかにする力）">課題発見力：おかしいな？に気づく</option>
+        <option value="計画力（課題の解決に向けたプロセスを明確にする力）">計画力：手順を考えて進める</option>
+        <option value="創造力（新しい価値を生み出す力）">創造力：工夫して新しいことをする</option>
+        <option value="発信力（自分の意見をわかりやすく伝える力）">発信力：自分の考えを伝える</option>
+        <option value="傾聴力（相手の意見を丁寧に聴く力）">傾聴力：最後までじっくり話を聴く</option>
+        <option value="柔軟性（意見の違いや状況の変化を受け入れる力）">柔軟性：変化に合わせられる</option>
+        <option value="情況把握力（自分と周囲の人や物事との関係を理解する力）">情況把握力：空気を読んで動く</option>
+        <option value="規律性（社会のルールや人との約束を守る力）">規律性：約束やルールを守る</option>
+        <option value="ストレスコントロール力（精神的な回復力）">ストレス耐性：大変でも切り替える</option>
+        <option value="その他">その他</option>
+    </select>
+    
+    <div id="competency_other_area" style="display: none; margin-top: 15px;">
+        <label>💡 あなたの「力」を自分の言葉で教えてください <span class="optional-label">（2〜3行でOK）</span></label>
+        <textarea id="competency_other_text" class="short-textarea" placeholder="例：誰とでもすぐ仲良くなれる、細かいミスに気づける、など" oninput="updateProgress()"></textarea>
+    </div>
+    
+    <label>その他、あなたに伝えたい部分を書いてください <span class="optional-label">（2〜3行・書けるところだけでOK）</span></label>
+    <div class="hint-box">
+        💡 こんな感じで書いてみて：
+        <ul>
+            <li>誰とでもすぐ仲良くなれる</li>
+            <li>細かいミスに気づくことができる</li>
+            <li>ゼミでプログラミングを一生懸命学んでいる</li>
+        </ul>
+    </div>
+    <textarea id="strength_free" class="short-textarea" placeholder="例：バイトで、忙しい時ほど周りに声をかけて助け合うようにしている。" oninput="updateProgress(); updateCharCount('strength_free', 'strength_count', 80)"></textarea>
+    <div class="char-counter" id="strength_count">0文字 / 80文字以上推奨</div>
+
+    <label>その力を発揮した「具体的なエピソード」<span class="optional-label">（3〜4行でOK）</span></label>
+    <div class="hint">アルバイト、サークル、ゼミ、日常のちょっとしたことでもOKです</div>
+    <textarea id="episode" rows="4" placeholder="例：居酒屋のバイトで、土曜の混雑時に新人さんが困っていたので、自分から「一緒にやろう」と声をかけた。お互いに助け合ったおかげで、お客様から「ありがとう」と言われて嬉しかった。" oninput="updateProgress(); updateCharCount('episode', 'episode_count', 150)"></textarea>
+    <div class="char-counter" id="episode_count">0文字 / 150文字以上推奨</div>
+
+    <div class="checkpoint">🎉 ここまで書けたら80%完了！ラストスパート！</div>
+
+    <!-- STEP 3: 価値観・キャリアプラン（超シンプル版） -->
+    <div class="step-indicator">💡 STEP 3: 最後に2つだけ選んでください</div>
+
+    <label>仕事をする上で、大切にしたいことは？<span class="optional-label">（1つ選ぶだけ）</span></label>
+    <select id="value_select" onchange="toggleValueOther(); updateProgress();">
+        <option value="">選んでください</option>
+        <option value="成長・学び続けたい">成長し続けたい・学び続けたい</option>
+        <option value="チームワーク・支え合い">チームで支え合って働きたい</option>
+        <option value="社会貢献・人の役に立つ">人の役に立ちたい</option>
+        <option value="挑戦・新しいことに挑戦">新しいことに挑戦したい</option>
+        <option value="安定・長く働く">安定して長く働きたい</option>
+        <option value="誠実さ・信頼される">誠実に、信頼される人でありたい</option>
+        <option value="その他">その他</option>
+    </select>
+    
+    <div id="value_other_area" style="display: none; margin-top: 15px;">
+        <label>💡 あなたの言葉で教えてください <span class="optional-label">（2〜3行でOK）</span></label>
+        <textarea id="value_other_text" class="short-textarea" placeholder="例：お客様に喜んでもらえる仕事がしたい、自分のペースでコツコツ働きたい、など" oninput="updateProgress()"></textarea>
+    </div>
+
+    <label>将来、どんな自分になっていたい？<span class="optional-label">（1つ選ぶだけ）</span></label>
+    <select id="career_select" onchange="toggleCareerOther(); updateProgress();">
+        <option value="">選んでください</option>
+        <option value="お客様から信頼される人">お客様から信頼される人</option>
+        <option value="後輩を育てられる人">後輩を育てられる人</option>
+        <option value="専門的な技術を持つ人">専門的な技術を持つ人</option>
+        <option value="チームをまとめられる人">チームをまとめられる人</option>
+        <option value="安定して働き続けている人">安定して働き続けている人</option>
+        <option value="会社に貢献できる人">会社に貢献できる人</option>
+        <option value="その他">その他</option>
+    </select>
+    
+    <div id="career_other_area" style="display: none; margin-top: 15px;">
+        <label>💡 あなたの言葉で教えてください <span class="optional-label">（2〜3行でOK）</span></label>
+        <textarea id="career_other_text" class="short-textarea" placeholder="例：家族を大切にしながら働き続けたい、地元で頼られる存在になりたい、など" oninput="updateProgress()"></textarea>
+    </div>
+
+    <div class="encouragement">
+        ✨ お疲れさまでした！これで全部完了です！<br>
+        下のボタンを押すと、AIがあなただけの志望動機を作るための「魔法のプロンプト」が出てきます。<br>
+        それをコピーして、Claude・ChatGPT・Geminiなどに貼り付けてください。<br>
+        <strong>あなたらしい、血の通った志望動機が、きっと生まれます。</strong>
+    </div>
+
+    <button class="btn-submit" onclick="generate()">✨ 魔法のプロンプトを生成する</button>
+
+    <div id="output">
+        <button class="copy-btn" onclick="copyPrompt()">📋 プロンプトをコピー</button>
+        <p style="font-weight:bold; color:#d35400; margin-bottom: 18px; clear: both; padding-top: 10px;">
+            ▼ 以下の文章をすべてコピーして、Claude・ChatGPT・Geminiなどに貼り付けてください
+        </p>
+        <textarea id="result" rows="22" readonly></textarea>
+        
+        <div class="checklist">
+            <h3>✅ AIから志望動機が返ってきたら、必ずチェック！</h3>
+            <label><input type="checkbox"> この志望動機を声に出して読んでみた？</label>
+            <label><input type="checkbox"> 自分の言葉で「なぜこの企業か」説明できる？</label>
+            <label><input type="checkbox"> エピソードは本当にあった話？</label>
+            <label><input type="checkbox"> 「御社の○○ページで...」と具体的に言える？</label>
+            <label><input type="checkbox"> 自分らしさが出ている？</label>
+            <p style="margin-top: 15px; color: #1565c0; font-weight: bold;">
+                全部チェックできたら、エントリーシートに書こう！
+            </p>
+        </div>
+
+        <div class="button-group">
+            <p style="font-weight: bold; color: #d35400; margin-bottom: 15px;">🥋 さらに準備したい人へ（任意）</p>
+            <button class="btn-dojo" onclick="showDojo()">面接道場にチャレンジする</button>
+            <button class="btn-secondary" onclick="alert('お疲れさまでした！\n志望動機、頑張ってください！\n応援しています🌱')">今回はここまで</button>
+        </div>
+    </div>
+
+    <div id="dojo-section">
+        <h2 style="color: #c23850; text-align: center; font-size: 1.3em;">🥋 面接道場にチャレンジ！</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 25px;">
+            この志望動機を元に、面接官役のAIに厳しい質問をしてもらいましょう。
+        </p>
+        
+        <div class="result-section">
+            <h3>📋 面接練習用プロンプト</h3>
+            <p style="color: #666; font-size: 0.95em; margin-bottom: 15px;">
+                以下をコピーして、AIに貼り付けてください：
+            </p>
+            <textarea id="dojo-prompt" rows="18" readonly></textarea>
+            <button class="copy-btn" onclick="copyDojo()" style="float: none; margin-top: 15px;">📋 このプロンプトをコピー</button>
+        </div>
+
+        <div class="hint-box" style="margin-top: 20px;">
+            💡 このプロンプトを使うと：
+            <ul>
+                <li>志望動機の「弱い部分」が分かる</li>
+                <li>面接で聞かれそうな質問が予測できる</li>
+                <li>答え方の練習ができる</li>
+            </ul>
+            <strong>頑張ってください！応援しています🌱</strong>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 「その他」選択時の入力欄表示/非表示
+    function toggleCompetencyOther() {
+        const select = document.getElementById('competency');
+        const otherArea = document.getElementById('competency_other_area');
+        if (select.value === 'その他') {
+            otherArea.style.display = 'block';
+        } else {
+            otherArea.style.display = 'none';
+        }
+    }
+
+    function toggleValueOther() {
+        const select = document.getElementById('value_select');
+        const otherArea = document.getElementById('value_other_area');
+        if (select.value === 'その他') {
+            otherArea.style.display = 'block';
+        } else {
+            otherArea.style.display = 'none';
+        }
+    }
+    
+    function toggleCareerOther() {
+        const select = document.getElementById('career_select');
+        const otherArea = document.getElementById('career_other_area');
+        if (select.value === 'その他') {
+            otherArea.style.display = 'block';
+        } else {
+            otherArea.style.display = 'none';
+        }
+    }
+
+    // 文字数カウンター
+    function updateCharCount(textareaId, counterId, recommended) {
+        const textarea = document.getElementById(textareaId);
+        const counter = document.getElementById(counterId);
+        const length = textarea.value.length;
+        
+        if (length === 0) {
+            counter.textContent = `0文字 / ${recommended}文字以上推奨`;
+            counter.className = 'char-counter';
+        } else if (length < recommended) {
+            counter.textContent = `${length}文字 / あと${recommended - length}文字以上書こう！`;
+            counter.className = 'char-counter warning';
+        } else {
+            counter.textContent = `${length}文字 / 十分です！素晴らしい！`;
+            counter.className = 'char-counter good';
+        }
+    }
+
+    // 進捗バー更新
+    function updateProgress() {
+        const fields = [
+            document.getElementById('company').value,
+            document.getElementById('job').value,
+            document.getElementById('trigger_select').value,
+            document.getElementById('trigger_free').value,
+            document.getElementById('competency').value,
+            document.getElementById('strength_free').value,
+            document.getElementById('episode').value,
+            document.getElementById('value_select').value,
+            document.getElementById('career_select').value
+        ];
+        
+        const filled = fields.filter(f => f && f.trim() !== '').length;
+        const total = fields.length;
+        const percentage = Math.round((filled / total) * 100);
+        
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = percentage + '%';
+        progressBar.textContent = percentage + '% 完了';
+    }
+
+    function generate() {
+        const company = document.getElementById('company').value || "志望企業";
+        const job = document.getElementById('job').value || "志望職種";
+        
+        // 惹かれた理由の統合
+        const triggerS = document.getElementById('trigger_select').value || "企業の雰囲気";
+        const triggerF = document.getElementById('trigger_free').value;
+        const triggerFull = triggerF ? `${triggerS}（具体的には：${triggerF}）` : triggerS;
+        
+        // 能力・強みの統合
+        const compS = document.getElementById('competency').value || "誠実に取り組む力";
+        const compOther = document.getElementById('competency_other_text').value;
+        const competencyFull = (compS === 'その他' && compOther) ? compOther : compS;
+        
+        const strengthF = document.getElementById('strength_free').value;
+        const strengthFull = strengthF ? `${competencyFull}（自分の言葉で言うと：${strengthF}）` : competencyFull;
+        
+        const episode = document.getElementById('episode').value || "日々の誠実な取り組み";
+        
+        // 価値観・キャリアプラン（「その他」の場合は自由記入を優先）
+        const valueSelect = document.getElementById('value_select').value || "誠実に働き続けたい";
+        const valueOther = document.getElementById('value_other_text').value;
+        const value = (valueSelect === 'その他' && valueOther) ? valueOther : valueSelect;
+        
+        const careerSelect = document.getElementById('career_select').value || "信頼される人になりたい";
+        const careerOther = document.getElementById('career_other_text').value;
+        const career = (careerSelect === 'その他' && careerOther) ? careerOther : careerSelect;
+
+        const prompt = `あなたは私の就活を全力で支えてくれる、伴走型のキャリアアドバイザーです。
+私は今、勇気を出して一歩踏み出し、志望動機を作ろうとしています。
+「どこにでもある志望動機だね」という正論に傷つかずに、私自身の「直感」と「日常の良さ」を活かした文章を一緒に作ってください。
+
+【提供する情報】
+
+■志望先：${company}
+■職種：${job}
+■私が惹かれた「直感的な理由」：
+「${triggerFull}」
+■私が持っている「能力・強み」：
+「${strengthFull}」
+■その力を発揮したエピソード：
+「${episode}」
+■仕事で大切にしたいこと：
+「${value}」
+■将来なりたい姿：
+「${career}」
+
+
+【AIさんにお願いしたいステップ】
+
+1. 企業研究（必須）：
+   ${company}の公式HP、採用ページ、企業理念ページを必ず検索して参照し、以下を分析してください。
+   参照した情報源のURLを必ず明記してください。
+   
+   ① 企業理念・ビジョン（参照URL: を明記）
+   ② この職種（${job}）で求められる力
+   ③ 企業文化・社風
+   
+   ※ 重要：学生が面接で「御社の○○ページに書かれていた△△という言葉に共感しました」と
+   　 具体的に語れるよう、参照元URLと引用箇所を必ず明示してください。
+
+2. 肯定：
+   まず、私が勇気を出して相談に来たことを心から称賛してください。
+   そして、私の「惹かれた理由（直感）」が、この企業の本質的な価値（理念や雰囲気）と
+   どう繋がっているのかを優しく解説し、私の感性を肯定してください。
+
+3. マッチング分析：
+   ① 私の強み（${strengthFull}）が、その仕事の現場でどのように役立ち、価値を発揮するか
+   ② 私の価値観（${value}）が、この企業の理念や目指す方向性とどう繋がるか
+   ③ 私のキャリアプラン（${career}）が、この企業が求める人物像とどう重なるか
+
+4. 志望動機作成：
+   以下の2パターンを作成してください：
+   - 300文字バージョン
+   - 500文字バージョン
+   
+   ※ 企業の具体的な情報（「採用ページの○○という言葉」「企業理念の△△」など）を
+   　 引用し、参照元URLも示してください。
+
+5. 面接対策：
+   ① 「他社でもいいのでは？」への切り返し案
+   ② 面接で使える「御社の○○ページで...」という具体的な語り方の例を3つ提示してください
+
+
+【重要な注意】
+- 完璧すぎる言葉や、嘘の作り込みは不要です
+- 私の等身大の温度感を大切にした、血の通った文章にしてください
+- 「〜だと思います」「〜と考えています」など、学生らしい素直な表現を大切に
+- エピソードは盛らず、ありのままの良さを引き出してください
+- 企業情報の参照元URLは必ず明記してください（これが最も重要です）`;
+
+        document.getElementById('result').value = prompt;
+        document.getElementById('output').style.display = 'block';
+        
+        // 面接道場用プロンプトも生成
+        const dojoPrompt = `あなたは${company}の面接官です。
+私の志望動機を読んで、以下をしてください：
+
+1. 志望動機の「弱い部分」「もっと具体的に語るべき部分」を3つ指摘
+2. 面接で聞かれそうな厳しい質問を5つ
+3. それぞれの質問への答え方のヒント
+
+【私の志望動機】
+（AIから返ってきた500文字版の志望動機をここに貼り付けてください）
+
+【私のエピソード】
+${episode}
+
+【私の強み】
+${strengthFull}
+
+厳しくても構いませんので、本番の面接で困らないよう、しっかり指摘してください。
+よろしくお願いします。`;
+
+        document.getElementById('dojo-prompt').value = dojoPrompt;
+        
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    function copyPrompt() {
+        const text = document.getElementById('result');
+        text.select();
+        document.execCommand('copy');
+        alert('✅ プロンプトをコピーしました！\n\n普段お使いのAI（Claude、ChatGPT、Geminiなど）に貼り付けてください。\n\nあなたらしい志望動機が、きっと生まれます。応援しています！');
+    }
+
+    function showDojo() {
+        document.getElementById('dojo-section').style.display = 'block';
+        document.getElementById('dojo-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyDojo() {
+        const text = document.getElementById('dojo-prompt');
+        text.select();
+        document.execCommand('copy');
+        alert('✅ 面接練習用プロンプトをコピーしました！\n\nAIから返ってきた志望動機を【私の志望動機】の部分に貼り付けてから、AIに送ってください。\n\n面接練習、頑張ってください！🥋');
+    }
+
+    // ページ読み込み時に進捗バーを初期化
+    window.onload = function() {
+        updateProgress();
+    }
+</script>
+
+</body>
+</html>
